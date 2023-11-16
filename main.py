@@ -4,5 +4,8 @@ import sys
 import shutil
 
 print("start of processing")
-shutil.copytree(sys.argv[1], sys.argv[2], dirs_exist_ok=True)
+src = sys.argv[1]
+dest = sys.argv[2]
+
+shutil.copytree(src, dest, dirs_exist_ok=True)
 print("end of processing")
