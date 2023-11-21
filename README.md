@@ -7,3 +7,5 @@ Add additional dependencies to the `Dockerfile`.
 To run locally:
 
 `docker-compose up --build`
+
+The current example supports python version 3.9.
