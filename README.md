@@ -1,4 +1,4 @@
-# hackathon-py-example
+# python-application-template
 
 Ensure that your python `main.py` takes an `input`directory and an `output` directory as arguments:
 
