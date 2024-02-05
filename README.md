@@ -1,16 +1,21 @@
 # python-application-template
 
-Ensure that your python `main.py` takes an `input`directory and an `output` directory as arguments:
-
-`main.py <INPUT_DIR> <OUTPUT_DIR>`
+Ensure that your main executable file, e.g. `main.py` makes use of the `INPUT_DIR` and the `OUTPUT_DIR` ENVIRONMENT variables, to access input and to write output.
 
 Add additional dependencies to the `Dockerfile`.
 
 To run locally:
 
-`docker-compose up --build`
+Run: `docker-compose up --build`
+
+The above will create a `data` directory in your root directory locally.
+
+The example copies files from the `INPUT_DIR` directory to the `OUTPUT_DIR` directory. The directories are set in `dev.env` and are defaulted to `/service/data/input` and `/service/data/ouput` for the input and output directories respectively.
+To test, create `input` and `output` subfolders in the `data` directory. Create a test file (for example `test.txt`) in the `/service/data/input` directory. 
+
+Re-Run: `docker-compose up --build`
+
+The testfile should be copied to the `data/output` directory.
 
 The current example supports python version 3.9.
 
-The example copies files from the `input` directory to the `output` directory. The `input` folder and `output` folders are created based on the `INTEGRATION_ID` specified in the `dev.env` file. On your first run of `docker-compose up --build` you will notice that a data folder is created with an `input/<INTEGRATION_ID>` folder, a similar output folder is also created. 
-To test, copy a test file (for example `test.txt`) into the `input/1` directory and re-run the `docker-compose up --build` command. The testfile should be copied to the `output/1` directory.

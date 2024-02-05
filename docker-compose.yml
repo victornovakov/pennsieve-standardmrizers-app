@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   
-  app-wrapper:
+  hackathon-python:
     env_file:
       - dev.env
     image: hackathon/python
@@ -12,4 +12,3 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile_arm64 # change to Dockerfile on Linux
-    entrypoint: /service/main
