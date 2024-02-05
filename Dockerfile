@@ -8,6 +8,8 @@ COPY . .
 
 RUN ls /service
 
+RUN chmod +x /service/main.py
+
 RUN mkdir -p data
 
 # Add additional dependencies below ...
