@@ -1,6 +1,6 @@
 # python-application-template
 
-Ensure that your main executable file, e.g. `main.py` makes use of the `INPUT_DIR` and the `OUTPUT_DIR` ENVIRONMENT variables, to access input and to write output.
+Ensure that your main file is ececutable and also makes use of the `INPUT_DIR` and the `OUTPUT_DIR` ENVIRONMENT variables, to access input files and to write output.
 
 Add additional dependencies to the `Dockerfile`.
 
