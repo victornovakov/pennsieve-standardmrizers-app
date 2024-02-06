@@ -11,4 +11,4 @@ services:
     container_name: hackathon-python
     build:
       context: .
-      dockerfile: ./Dockerfile_arm64 # change to Dockerfile on Linux
+      dockerfile: ./Dockerfile

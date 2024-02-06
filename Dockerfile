@@ -8,11 +8,9 @@ COPY . .
 
 RUN ls /service
 
-RUN chmod +x /service/main.py
-
 RUN mkdir -p data
 
 # Add additional dependencies below ...
 RUN pip install -r /service/requirements.txt
 
-ENTRYPOINT [ "/service/main.py" ]
+ENTRYPOINT [ "python3.9", "/service/main.py" ]
