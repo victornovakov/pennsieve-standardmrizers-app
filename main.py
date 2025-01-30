@@ -4,15 +4,6 @@ import sys
 import shutil
 import os
 
-print("start of processing")
-src = os.environ['INPUT_DIR']
-dest = os.environ['OUTPUT_DIR']
-
-print("Command line arguments ...")
-print(sys.argv)
-print("ENV variables ...")
-print(os.environ)
-
 #%% Import Libraries
 import neuroHarmonize as nh
 import numpy as np
@@ -472,9 +463,11 @@ class T1MRIHarmonizer:
 #%% Main function to run as a script
 if __name__ == "__main__":
 
-    project_path = Path(__file__).parent.parent
-    metadata_path = project_path / 'data' / 'metadata.csv'
-    roi_volume_path = project_path / 'data' / 'roi_volume.csv'
+    # project_path = Path(__file__).parent.parent
+    src = os.environ['INPUT_DIR']
+ 
+    metadata_path = f'{src}/metadata.csv'
+    roi_volume_path = f'{src}/roi_volume.csv'
 
     #%% Load data
     print(f"Loading metadata from: {metadata_path}")
@@ -491,18 +484,29 @@ if __name__ == "__main__":
 
     #%% Process data
     t1mri = T1MRIHarmonizer(roi_volume, metadata)
-    t1mri.harmonize_roi_volume()
 
-    harmonized_data = t1mri.harmoized_data.to_csv(dest / 't1_harmonized.csv')
+    dest = os.environ['OUTPUT_DIR']
+    save_path = f'{dest}/t1mri_harmonization'
 
+    print('a')
+    t1mri.harmonize_roi_volume().to_csv(f'{save_path}/harmonized_roi_volume.csv')
+    print('b')
+    #t1mri.to_csv('harmonized_roi_volume.csv', index=False) 
+    
+    
+    harmonized_location = f'{dest}/t1_harmonized.csv'
+    #harmonized_data = t1mri.harmonized_data.to_csv(harmonized_location)
+    
+    
     # Create save path
-    save_path = dest #project_path / 'results' / 't1mri_harmonization'
-    #save_path.mkdir(parents=True, exist_ok=True)
-
+    
+    
+    # save_path.mkdir(parents=True, exist_ok=True)
+    
     # Visualize results with save path
     t1mri.visualize_harmonization_tsne(batch=metadata['SITE'], save_path=save_path)
     t1mri.visualize_harmonization_roc(batch=metadata['SITE'], save_path=save_path)
+    
 
-
-shutil.copytree(src, dest, dirs_exist_ok=True)
-print("end of processing")
+#shutil.copytree(src, dest, dirs_exist_ok=True)
+#print("end of processing")
