@@ -1,18 +1,3 @@
-#!/usr/bin/env python3.9
-
-import sys
-import shutil
-import os
-
-print("start of processing")
-src = os.environ['INPUT_DIR']
-dest = os.environ['OUTPUT_DIR']
-
-print("Command line arguments ...")
-print(sys.argv)
-print("ENV variables ...")
-print(os.environ)
-
 #%% Import Libraries
 import neuroHarmonize as nh
 import numpy as np
@@ -493,16 +478,10 @@ if __name__ == "__main__":
     t1mri = T1MRIHarmonizer(roi_volume, metadata)
     t1mri.harmonize_roi_volume()
 
-    harmonized_data = t1mri.harmoized_data.to_csv(dest / 't1_harmonized.csv')
-
     # Create save path
-    save_path = dest #project_path / 'results' / 't1mri_harmonization'
-    #save_path.mkdir(parents=True, exist_ok=True)
+    save_path = project_path / 'results' / 't1mri_harmonization'
+    save_path.mkdir(parents=True, exist_ok=True)
 
     # Visualize results with save path
     t1mri.visualize_harmonization_tsne(batch=metadata['SITE'], save_path=save_path)
     t1mri.visualize_harmonization_roc(batch=metadata['SITE'], save_path=save_path)
-
-
-shutil.copytree(src, dest, dirs_exist_ok=True)
-print("end of processing")
