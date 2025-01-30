@@ -486,7 +486,7 @@ if __name__ == "__main__":
     t1mri = T1MRIHarmonizer(roi_volume, metadata)
 
     dest = os.environ['OUTPUT_DIR']
-    save_path = f'{dest}/t1mri_harmo'
+    save_path = dest
 
     print('a')
     t1mri.harmonize_roi_volume().to_csv(f'{save_path}/harmonized_roi_volume.csv')
