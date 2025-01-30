@@ -15,5 +15,4 @@ neuroCombat>=0.2.12
 plotly>=5.18.0
 openpyxl>=3.0.0
 nilearn>=0.10.0
-pyvista>=0.43.0
 pingouin>=0.5.5
