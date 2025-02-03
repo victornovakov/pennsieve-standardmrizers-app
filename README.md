@@ -1,4 +1,4 @@
-# python-application-template
+# pennsieve-standardmrizers-app
 
 Ensure that your main file makes use of the `INPUT_DIR` and the `OUTPUT_DIR` ENVIRONMENT variables, to access input files and to write output.
 
